@@ -1,91 +1,152 @@
-# Transformers are Short Text Classifiers: A Study of Inductive Short Text Classifiers on Benchmarks and Real-world Datasets
+# Final Project in Deep Learning Course at Ben Gurion University
 
-This repository contains code to reproduce the results in our paper "Transformers are Short Text Classifiers: A Study of Inductive Short Text Classifiers on Benchmarks and Real-world Datasets".
+Stav Dratva & Peleg Eliyahou (Group 3)
 
-This study's objective was to examine the performance of a variety of short text classifiers as well as the top performing traditional text classifier on single-label short text classification.
-Furthermore, we propose in this work two new real-world datasets for short text classification (e.g. [STOPS](./data/STOPS) and [NICE](./data/NICE)).
+This repository contains code to reproduce the results of Enhancing Question Classification with Augmented Data project.
 
-## Table of Contents
-- [Getting Started](#getting-started)
-- [Running the Experiments](#running-the-experiments)
-- [Structure of the Repository](#structure-of-the-repository)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+### Installing Requirements
 
-
-## Getting Started
-
-These instructions will let you run the code on your local machine for reproduction purposes.
-
-
-### Installing
-
-A step by step series that tell you how to get the experiments running.
-
+In order to run the code, you should make sure the libraries requirements are satisfied.
 Install the requirements using pip
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Make sure you installed the right CUDA version for your GPU. 
-You can check the CUDA version of your GPU [here](https://developer.nvidia.com/cuda-gpus).
-
-### Setup the Datasets
-
-Not all datasets are included in this repository due to licensing issues.
-To run the experiments, you need to download the datasets and place them in the correct folder.
-
-For instructions on how to obtain the data, see the [README](data/README.md) in the data folder.
 
 ## Running the Experiments
 
 To run the experiments, you can use the following command:
 
 ```bash
-python main.py <dataset> <model>
+python main.py TREC BERT --learning_rate=5e-5 --batch_size=128 --num_train_epochs=10 > output.txt
 ```
 
-where `<dataset>` is the name of the dataset and `<model>` is the name of the model.
-Possible entries for `<dataset>` are: 
 
--  `MR`
--  `R8`
--  `SearchSnippets`
--  `Twitter`
--  `TREC`
--  `SST2`
--  `NICE`
--  `NICE2`
--  `STOPS`
--  `STOPS2`
+### Data Augmentation 
+
+To run the code to produce the data augmentation files, you should run the following Python files from the "data_augmentation" directory:
 
 
-Possible entries for `<model>` are:
+1. augment.py - The code that produces the EDA augmented files. You should change the following parameters in the "arguments" dictionary:
+   num_aug = The number of augmented sentences that will produce from each original record.
+   output_clean, output, output_labels = The file path of the output files.
+2. backtranslation.py - The code that performs back translation to Hebrew from the original dataset.
+   The chosen target language for this experiment was Hebrew. If you want toperformm back translation to another language you can change the value of "target_lang" in the "arguments" dictionary.
+   The available languages are as follows:
+   af - afrikaans
+sq - albanian
+am - amharic
+ar - arabic
+hy - armenian
+az - azerbaijani
+eu - basque
+be - belarusian
+bn - bengali
+bs - bosnian
+bg - bulgarian
+ca - catalan
+ceb - cebuano
+ny - chichewa
+zh-cn - chinese (simplified)
+zh-tw - chinese (traditional)
+co - corsican
+hr - croatian
+cs - czech
+da - danish
+nl - dutch
+en - english
+eo - esperanto
+et - estonian
+tl - filipino
+fi - finnish
+fr - french
+fy - frisian
+gl - galician
+ka - georgian
+de - german
+el - greek
+gu - gujarati
+ht - haitian creole
+ha - hausa
+haw - hawaiian
+iw - hebrew
+he - hebrew
+hi - hindi
+hmn - hmong
+hu - hungarian
+is - icelandic
+ig - igbo
+id - indonesian
+ga - irish
+it - italian
+ja - japanese
+jw - javanese
+kn - kannada
+kk - kazakh
+km - khmer
+ko - korean
+ku - kurdish (kurmanji)
+ky - kyrgyz
+lo - lao
+la - latin
+lv - latvian
+lt - lithuanian
+lb - luxembourgish
+mk - macedonian
+mg - malagasy
+ms - malay
+ml - malayalam
+mt - maltese
+mi - maori
+mr - marathi
+mn - mongolian
+my - myanmar (burmese)
+ne - nepali
+no - norwegian
+or - odia
+ps - pashto
+fa - persian
+pl - polish
+pt - portuguese
+pa - punjabi
+ro - romanian
+ru - russian
+sm - samoan
+gd - scots gaelic
+sr - serbian
+st - sesotho
+sn - shona
+sd - sindhi
+si - sinhala
+sk - slovak
+sl - slovenian
+so - somali
+es - spanish
+su - sundanese
+sw - swahili
+sv - swedish
+tg - tajik
+ta - tamil
+te - telugu
+th - thai
+tr - turkish
+uk - ukrainian
+ur - urdu
+ug - uyghur
+uz - uzbek
+vi - vietnamese
+cy - welsh
+xh - xhosa
+yi - yiddish
+yo - yoruba
+zu - zulu
 
-- `BERT`
-- `ROBERTA`
-- `DEBERTA`
-- `MLP`
-- `ERNIE`
-- `DISTILBERT`
-- `ALBERT`
-- `LSTM`
-- `STACKING`
-- `WEIGHTED_BOOST`
-- `WEIGHTED`
+Process finished with exit code 0
 
-`STACKING`, `WEIGHTED_BOOST` and `WEIGHTED` are ensemble methods that require additional parameters.
-For `WEIGHTED_BOOST` and `WEIGHTED` you can specify the models that should be used in the ensemble by adding the parameters `--m1` and `--m2` followed by the model names.
-For `STACKING` you also need to specify a meta model by adding the parameter `--mm` followed by the meta model name.
+Process finished with exit code 0
 
-For information on optional parameters, you can use the `--help` flag.
-
-```bash
-python main.py --help
-```
-
-### Sample 
+    
 
 To run the experiments on the MR dataset using the ALBERT model and our parameters, you can use the following command:
 
