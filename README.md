@@ -75,7 +75,6 @@ The available languages for back translation are as follows:
    - ha - hausa
    - haw - hawaiian
    - iw - hebrew
-   - he - hebrew
    - hi - hindi
    - hmn - hmong
    - hu - hungarian
