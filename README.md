@@ -30,12 +30,12 @@ In order to run the experiments with the augmented data files we attached, you s
 
 If you want to run yourself the code to produce the data augmentation files, you should run the following Python files from the "data_augmentation" directory:
 
-1. **augment.py** - The code that produces the EDA augmented files. You should change the following parameters in the "arguments" dictionary:
+1. *augment.py* - The code that produces the EDA augmented files. You should change the following parameters in the "arguments" dictionary:
    num_aug = The number of augmented sentences that will produce from each original record.
    output_clean, output, output_labels = The file path of the output files.
-2. **backtranslation.py** - The code that performs back translation to Hebrew from the original dataset.
+2. *backtranslation.py* - The code that performs back translation to Hebrew from the original dataset.
    The chosen target language for this experiment was Hebrew. If you want to perform back translation to another language you can change the value of "target_lang" in the "arguments" dictionary.
-3. **eda+backtranslation.py** - The code that performs back translation to Hebrew from the augmented EDA files. You can change the EDA files you want to perform back translation on by changing the "input" arguments in the "arguments" dictionary.
+3. *eda+backtranslation.py* - The code that performs back translation to Hebrew from the augmented EDA files. You can change the EDA files you want to perform back translation on by changing the "input" arguments in the "arguments" dictionary.
 
 The available languages for back translation are as follows:
    - af - afrikaans
