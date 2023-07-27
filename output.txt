@@ -1,4 +1,0 @@
-hi
-[Memory]0.0s, 0.0min    : Loading load_data...
-bert-base-uncased
-{'loss': 0.75, 'learning_rate': 4.5116279069767444e-05, 'epoch': 0.98}
